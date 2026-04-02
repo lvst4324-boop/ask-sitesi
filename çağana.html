@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Çağan ❤️</title>
+
+<style>
+body {
+    margin:0;
+    overflow:hidden;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    font-family: Arial;
+    text-align:center;
+    color:white;
+}
+
+h1 {
+    margin-top:80px;
+    font-size:32px;
+    text-shadow:0 0 15px white;
+    padding: 0 10px;
+}
+
+#text {
+    font-size:20px;
+    margin-top:10px;
+}
+
+.btn {
+    padding:12px 20px;
+    font-size:16px;
+    border:none;
+    border-radius:12px;
+    margin:15px;
+}
+
+#yes {
+    background:#00ff88;
+}
+
+#no {
+    background:#ff4444;
+    position:absolute;
+}
+
+/* kalpler */
+.heart {
+    position:absolute;
+    animation:float 5s linear infinite;
+}
+
+@keyframes float {
+    0% {transform:translateY(100vh); opacity:1;}
+    100% {transform:translateY(-10vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<h1 id="title"></h1>
+<div id="text">Beni seviyor musun? 🥺</div>
+
+<button id="yes" class="btn">Evet 💚</button>
+<button id="no" class="btn">Hayır 😢</button>
+
+<script>
+// yazı animasyonu
+const text = "Çağan Seni Seviyorum ❤️";
+let i = 0;
+
+function yaz() {
+    if (i < text.length) {
+        document.getElementById("title").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(yaz, 70);
+    }
+}
+yaz();
+
+// kalpler
+setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤️";
+    h.style.left = Math.random()*100+"vw";
+    h.style.fontSize = (Math.random()*15+10)+"px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+}, 250);
+
+// hayır kaçma (telefonda dokununca da kaçar)
+const no = document.getElementById("no");
+
+function kac(){
+    no.style.left = Math.random()*80+"vw";
+    no.style.top = Math.random()*80+"vh";
+}
+
+no.addEventListener("mouseover", kac);
+no.addEventListener("touchstart", kac);
+
+// evet efekti
+document.getElementById("yes").onclick = () => {
+    alert("Ben de seni seviyorum 😍❤️");
+};
+</script>
+
+</body>
+</html>
